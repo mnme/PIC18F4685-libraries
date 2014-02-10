@@ -11,21 +11,28 @@
 #ifndef _BOARD_CONFIG_H_
 #define _BOARD_CONFIG_H_
 
+// Defines:
+//#define USE_ADC
+#define USE_LOOPDELAY_TIMER2
+
+
 // Include standard libraries
 
 #include <xc.h>
-#include "config_18F4685.h" // Config bits
 #include <stdio.h>
 #include <string.h>
 
-// Include other libraries
-
-
+#include "config_18F4685.h" // Config bits
+#include "peripheral.h"     //
+#include "hal_PBA5.h"
+#include "loopdelay.h"
 
 // Define clock speed
 #define _XTAL_FREQ 20000000 // 20 MHz
 // Extended string handling (special chars)
 #pragma jis
+
+
 
 
 
