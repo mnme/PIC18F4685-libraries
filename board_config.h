@@ -12,7 +12,9 @@
 #define _BOARD_CONFIG_H_
 
 // Defines:
-//#define USE_ADC
+#define USE_LCD
+#define STDOUT_LCD true
+#define USE_ADC
 #define USE_LOOPDELAY_TIMER2
 
 
@@ -23,9 +25,11 @@
 #include <string.h>
 
 #include "config_18F4685.h" // Config bits
-#include "peripheral.h"     //
-#include "hal_PBA5.h"
+#include "peripheral.h"     // Peripherals Defines
+#include "lcd.h"
 #include "loopdelay.h"
+#include "state_machine.h"
+
 
 // Define clock speed
 #define _XTAL_FREQ 20000000 // 20 MHz
@@ -33,13 +37,9 @@
 #pragma jis
 
 
-
-
-
-
 // Function prototypes
 
 void init(void);
-
+void putch(unsigned char c);
 // _BOARD_CONFIG_H
 #endif

@@ -17,6 +17,14 @@
  * 
  * This method initializes 
  */
+
+
+void putch(unsigned char c) {
+#ifdef STDOUT_LCD
+	lcd_putc(c);
+#endif
+}
+
 void init(void)
 {
 // === PORT INITS ==============================================================
@@ -33,31 +41,35 @@ void init(void)
     PORTE = 0x00;
 
 // === A/D Converter ===========================================================
-    #ifdef USE_ADC
-        ADCON0 = 0x01; 	// Enable A/D Converter
-        ADCON1 = 0x0D; 	// AN0 und AN1 = Analoge Pins
-        ADCON2 = 0x24; 	// Left Adjustet, 8 TAD, FOSC/4
+#ifdef USE_ADC
+    ADCON0 = 0x01; 	// Enable A/D Converter
+    ADCON1 = 0x0D; 	// AN0 and AN1 = Analoge Pins
+    ADCON2 = 0x24; 	// Left Adjustet, 8 TAD Time, FOSC/4
+#endif
+#ifndef USE_ADC
+    ADCON0 = 0x00;	// Disable A/D Converter
+    ADCON1 = 0x0F;
+    ADCON2 = 0x00;
+#endif
 
-    #endif
-    #ifndef USE_ADC
-        ADCON0 = 0x00;	// Disable A/D Converter
-        ADCON1 = 0x0F;
-        ADCON2 = 0x00;
-    #endif
+// === LCD =====================================================================
+#ifdef USE_LCD
+    lcd_init();
+#endif
 
 // === LOOPDELAY TIMER2 ========================================================
-    #ifdef USE_LOOPDELAY_TIMER2
-        // Creates every ms an Intterupt
-        T2CON = 0b00101101; // bit 6-3  Postscale = 5
-                            // bit 2    Timer On
-                            // bit 1-0  Prescaler = 4
-        PR2 = 250;
+#ifdef USE_LOOPDELAY_TIMER2
+    // Creates every ms an Intterupt
+    T2CON = 0b00101101; // bit 6-3  Postscale = 5
+                        // bit 2    Timer On
+                        // bit 1-0  Prescaler = 4
+    PR2 = 250;
 
-        // Interrupt:
-        GIE = 1; // Global Interrupt Enable
-        PEIE = 1; // Peripheral Interrupt Enable
-        TMR2IE = 1; // Timer 2 Interrupt Enable
-        TMR2IP = 1; // Priority Setting, Only Required wenn IPEN = 1
-        //(Then only high priority interrupts (1) will be detected)
-    #endif
+    // Interrupt:
+    GIE = 1; // Global Interrupt Enable
+    PEIE = 1; // Peripheral Interrupt Enable
+    TMR2IE = 1; // Timer 2 Interrupt Enable
+    TMR2IP = 1; // Priority Setting, Only Required wenn IPEN = 1
+    //(Then only high priority interrupts (1) will be detected)
+#endif
 }

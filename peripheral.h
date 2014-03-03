@@ -1,12 +1,14 @@
 /* 
- * File:   hal.h
+ * File:   peripheral.h
  * Author: Roger
  *
  * Created on 9. Februar 2014, 20:20
  */
 
-#ifndef HAL_H
-#define	HAL_H
+#include "board_config.h"
+
+#ifndef PERIPHERAL_H
+#define	PERIPHERAL_H
 
 // === TASTER ==================================================================
 #define TASTER0 RB0
@@ -35,10 +37,13 @@
 
 
 // === ADC =====================================================================
-#define CH_POTI1
-#define CH_POTI2
-//adc_read(POTI1, 8bit)
-
+#ifdef USE_ADC
+    #define CH_POTI1 0
+    #define CH_POTI2 1
+    unsigned int adc_get_10bit(void);
+    unsigned char adc_get_8bit(void);
+    void adc_set_channel(unsigned char); // CH_POTI1 oder CH_POTI2
+#endif
 
 // === LCD =====================================================================
 #define LCD_RW  LATC0
@@ -53,5 +58,5 @@
 // === OTHER ===================================================================
 #define SUMMER  LATC5
 
-#endif	/* HAL_H */
+#endif	/* PERIPHERAL_H */
 
