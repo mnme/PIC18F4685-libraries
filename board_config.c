@@ -45,8 +45,7 @@ void init(void)
     ADCON0 = 0x01; 	// Enable A/D Converter
     ADCON1 = 0x0D; 	// AN0 and AN1 = Analoge Pins
     ADCON2 = 0x24; 	// Left Adjustet, 8 TAD Time, FOSC/4
-#endif
-#ifndef USE_ADC
+#else
     ADCON0 = 0x00;	// Disable A/D Converter
     ADCON1 = 0x0F;
     ADCON2 = 0x00;
@@ -66,10 +65,25 @@ void init(void)
     PR2 = 250;
 
     // Interrupt:
-    GIE = 1; // Global Interrupt Enable
-    PEIE = 1; // Peripheral Interrupt Enable
     TMR2IE = 1; // Timer 2 Interrupt Enable
     TMR2IP = 1; // Priority Setting, Only Required wenn IPEN = 1
     //(Then only high priority interrupts (1) will be detected)
+#endif
+#ifdef USE_LOOPDELAY_TIMER0
+	T0CON = 0b11000111; // bit 7	Timer On
+						// bit 6	8-bit Mode
+						// bit 5	Internal clock source (fosc/4)
+						// bit 4	Source Edge (doesn't matter)
+						// bit 3	Prescaler is enabled
+						// bit 2-0	Prescaler = 256
+	
+    // Interrupt:
+    TMR0IE = 1; // Timer 0 Interrupt Enable
+    TMR0IP = 1; // Priority Setting, Only Required wenn IPEN = 1
+    //(Then only high priority interrupts (1) will be detected)
+#endif
+#ifdef ENABLE_INTERRUPTS
+    GIE = 1; // Global Interrupt Enable
+    PEIE = 1; // Peripheral Interrupt Enable
 #endif
 }
