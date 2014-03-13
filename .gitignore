@@ -16,3 +16,13 @@
 *.exe
 *.out
 *.app
+
+# Private Project Configuration
+nbproject/private*
+
+# build/dist folders
+build/
+dist/
+
+# object files
+*.obj
