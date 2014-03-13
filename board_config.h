@@ -16,7 +16,7 @@
 #define STDOUT_LCD true
 #define USE_ADC
 #define USE_LOOPDELAY_TIMER2
-
+#define ENABLE_INTERRUPTS
 
 // Include standard libraries
 
@@ -26,9 +26,10 @@
 
 #include "config_18F4685.h" // Config bits
 #include "peripheral.h"     // Peripherals Defines
-#include "lcd.h"
-#include "loopdelay.h"
-#include "state_machine.h"
+#include "lcd.h"			// LCD Library
+#include "loopdelay.h"		// Loopdelay
+#include "state_machine.h"	// State machine
+#include "error.h"			// Error handling
 
 
 // Define clock speed

@@ -7,7 +7,6 @@
 
 #include "board_config.h"
 #include "loopdelay.h"
-#include <xc.h>
 
 
 // === Loopdelay Time Set ===========================================================
@@ -24,10 +23,16 @@ void interrupt Global_ISR(void){
     if (TMR2IF && TMR2IE) {
         loopdelay_counter++;
         TMR2IF = 0;
+		//assert(loopdelay_counter > loopdelay_time_ms);
         if(loopdelay_counter > loopdelay_time_ms){
-            printf("\nLoopdelay Stuck");
+            PrintError(ERR_LOOPDELAY);
         }
     }
+	if (TMR0IF && TMR0IE)
+	{
+		TMR0L = 13;
+		TMR0IF = 0;
+	}
 }
 
 

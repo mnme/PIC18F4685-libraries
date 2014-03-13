@@ -5,15 +5,12 @@
  * Created on 27.02.14
  */
 
-
-
 typedef enum {S_Status_1, S_Status_2, S_Status_3} TState;
 TState state = S_Status_1;
 
 #include "board_config.h"
 #include <xc.h>
 #define _XTAL_FREQ 20000000
-
 
 volatile unsigned int loopdelay_time_ms = 10;
 
@@ -52,8 +49,3 @@ void main(void){
         }//end switch
     }//end while
 }//end main
-
-
-
-
-
