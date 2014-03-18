@@ -65,15 +65,29 @@ void init(void)
                         // bit 1-0  Prescaler = 4
     PR2 = 250;
 
-    // Interrupt:
-    GIE = 1; // Global Interrupt Enable
-    PEIE = 1; // Peripheral Interrupt Enable
     TMR2IE = 1; // Timer 2 Interrupt Enable
     TMR2IP = 1; // Priority Setting, Only Required wenn IPEN = 1
     //(Then only high priority interrupts (1) will be detected)
 #endif
 
+#ifdef USE_LOOPDELAY_TIMER0
+    T0CON = 0b11000100; // bit 7	Timer On
+						// bit 6	8-bit Mode
+						// bit 5	Internal clock source (fosc/4)
+						// bit 4	Source Edge (doesn't matter)
+						// bit 3	Prescaler is enabled
+						// bit 2-0	Prescaler = 32
 
+    // Interrupt:
+    TMR0IE = 1; // Timer 0 Interrupt Enable
+    TMR0IP = 1; // Priority Setting, Only Required wenn IPEN = 1
+    //(Then only high priority interrupts (1) will be detected)
+#endif
+#ifdef ENABLE_INTERRUPTS
+    // Interrupt:
+    GIE = 1; // Global Interrupt Enable
+    PEIE = 1; // Peripheral Interrupt Enable
+#endif
 #ifdef USE_RAND
     srand(123); // USE:  x = rand()%8+1; -> Zahlen von 1 bis 8 (%Breite+Offset)
 #endif

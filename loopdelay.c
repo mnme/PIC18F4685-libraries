@@ -31,13 +31,25 @@ void loopdelay(unsigned int value){
 }
 
 void interrupt Global_ISR(void){
+#ifdef USE_LOOPDELAY_TIMER2
     if (TMR2IF && TMR2IE) {
-        loopdelay_counter++;
         TMR2IF = 0;
+        loopdelay_counter++;
         if(loopdelay_counter > loopdelay_time_ms){
             stuck = 1;  // Can't use printf here, takes too long!
         }
     }
+#endif
+#ifdef USE_LOOPDELAY_TIMER0
+    if (TMR0IF && TMR0IE) {
+        TMR0IF = 0;
+        loopdelay_counter++;
+        TMR0L = 100; // preload
+        if(loopdelay_counter > loopdelay_time_ms){
+            stuck = 1;  // Can't use printf here, takes too long!
+        }
+    }
+#endif
 }
 
 

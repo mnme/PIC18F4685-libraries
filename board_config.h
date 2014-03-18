@@ -16,7 +16,11 @@
 #define STDOUT_LCD true
 //#define LCD_DEBUG_ON    // Shows state and loopdelay time (overflow) on lcd
 #define USE_ADC
+
 #define USE_LOOPDELAY_TIMER2
+//#define USE_LOOPDELAY_TIMER0
+
+#define ENABLE_INTERRUPTS
 #define USE_RAND        // USE:  x = rand()%8+1; -> 1 bis 8 (%Breite+Offset)
                         // stdlib.h will be included and srand for init
 // Define clock speed

@@ -10,9 +10,9 @@
 
 #include "board_config.h"
 
-#ifndef USE_LOOPDELAY_TIMER2
+/*#ifndef USE_LOOPDELAY_TIMER2
     #error "Loopdelay not activated"
-#endif
+#endif*/
 
 typedef struct {
     unsigned switch0: 1;

@@ -40,6 +40,10 @@ void main(void){
                     state = S_Game;
                 }
 
+                if(Events.timeout_ms(1000)){
+                    LED0 = !LED0;
+                }
+
                 break;
             // === S_Break =====================================================
             case S_Break:
