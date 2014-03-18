@@ -18,17 +18,17 @@ static unsigned char timeout_once_ms(unsigned int t){
 }
 
 static unsigned char timeout_ms(unsigned int t){
-	return ((Events.time_ms%t) <= 10/*loopdelay_time_ms*/);	 // Returns every 't' ms a 1. The <= is necessary
+	return ((Events.time_ms > loopdelay_time_ms) && ((Events.time_ms%t) < loopdelay_time_ms));	 // Returns every 't' ms a 1. The <= is necessary
 	// if the loopdelay is e.g. 11ms and the timeout 20ms. Then at 22ms, when it checks this 
 	// condition the expression returns a '1'
 }
 static unsigned char active_until_ms(unsigned int t){
-	return (t<=Events.time_ms); // Max resolution is loopdelay_time_ms
+	return (t>=Events.time_ms); // Max resolution is loopdelay_time_ms
 }
 
 
 TEvents get_events(void){
-	Events.time_ms += 10/*loopdelay_time_ms*/; // Change Maybe!
+	Events.time_ms += loopdelay_time_ms;
 	if(Events.f_state != *state){
 		Events.time_ms = 0;
 	}

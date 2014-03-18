@@ -9,11 +9,12 @@
 #define	LCD_H
 
 
-#define CURSOR_ON           0x06
-#define CURSOR_OFF          0x04
-#define CURSOR_OFF_BLINK    0x05
-#define CURSOR_ON_BLINK     0x07
 
+//Defines for Cursor-Function (dispcurs(mode);)
+#define CURS_ON 			0x06
+#define CURS_OFF 			0x04
+#define CURS_OFF_BLINK 	0x05
+#define CURS_ON_BLINK 	0x07
 
 //Makros für das Senden eines Befehl
 #define lcd_send_command(command)	lcd_send(command)

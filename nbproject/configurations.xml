@@ -6,7 +6,6 @@
                    projectFiles="true">
       <itemPath>board_config.h</itemPath>
       <itemPath>config_18F4685.h</itemPath>
-      <itemPath>error.h</itemPath>
       <itemPath>lcd.h</itemPath>
       <itemPath>loopdelay.h</itemPath>
       <itemPath>peripheral.h</itemPath>
@@ -20,7 +19,6 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>board_config.c</itemPath>
-      <itemPath>error.c</itemPath>
       <itemPath>lcd.c</itemPath>
       <itemPath>loopdelay.c</itemPath>
       <itemPath>main.c</itemPath>

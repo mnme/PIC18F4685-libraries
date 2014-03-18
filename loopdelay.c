@@ -7,6 +7,7 @@
 
 #include "board_config.h"
 #include "loopdelay.h"
+#include <xc.h>
 
 
 // === Loopdelay Time Set ===========================================================
@@ -14,7 +15,17 @@
 
 static volatile unsigned int loopdelay_counter = 0;
 
-void loopdelay(void){
+static unsigned char stuck = 0;
+void loopdelay(unsigned int value){
+#ifdef LCD_DEBUG_ON
+    printf("\fstate: %2d        ", value);
+    if(stuck == 1){
+        printf("\nTime:%3d  Stuck!", loopdelay_counter);
+        stuck = 0;
+    } else {
+        printf("\nTime:%3d", loopdelay_counter);
+    }
+#endif
     while(loopdelay_counter < loopdelay_time_ms);
     loopdelay_counter = 0;
 }
@@ -23,16 +34,10 @@ void interrupt Global_ISR(void){
     if (TMR2IF && TMR2IE) {
         loopdelay_counter++;
         TMR2IF = 0;
-		//assert(loopdelay_counter > loopdelay_time_ms);
         if(loopdelay_counter > loopdelay_time_ms){
-            PrintError(ERR_LOOPDELAY);
+            stuck = 1;  // Can't use printf here, takes too long!
         }
     }
-	if (TMR0IF && TMR0IE)
-	{
-		TMR0L = 13;
-		TMR0IF = 0;
-	}
 }
 
 
