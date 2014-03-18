@@ -19,6 +19,9 @@
 
 # Private Project Configuration
 nbproject/private*
+nbproject/Makefile*
+nbproject/Package*
+funclist
 
 # build/dist folders
 build/
