@@ -1,6 +1,6 @@
 /* 
  * File:   state_machine.h
- * Author: Roger
+ * Author: Roger German
  *
  * Created on 9. Februar 2014, 21:05
  */

@@ -1,6 +1,6 @@
 /* 
  * File:   loopdelay.c
- * Author: Roger
+ * Author: Roger Germann
  *
  * Created on 9. Februar 2014, 21:05
  */

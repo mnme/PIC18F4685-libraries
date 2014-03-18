@@ -1,19 +1,9 @@
-/******* State-machine-library for  PBA5 & other PIC-Hardware  ******************************
- *																							*
- * Titel: 			Board-Support-Library loop-delay for PIC16F877/877A						*
- * Compiler:		HI-TECH C Version 9.60PL4 and higher									*
- * Autor:			Remo Seiler, Ascom (Schweiz) AG, Berufsbildungscenter					*
- * Date:			18.05.2011															  	*
- * Last modified:	24.05.2011															  	*
- * Version:			6.0.4																  	*
- * History:			R.Seiler:	18.05.2011	Release 1 for PBA5								*
- *					R.Seiler:	23.05.2011	cleanup and optimizing event-type				*
- *					R.Seiler:	24.05.2011	add active_until_ms()-function					*
- *																							*
- * Info:			Library for implementig a state machine as a time-triggered system		*
- *					The used controller must have at least one onchip timer module.			*
- *																							*
- ********************************************************************************************/
+/*
+ * File:   peripheral.h
+ * Author: Roger Germann
+ *
+ * Created on 9. Februar 2014, 20:20
+ */
 
 #include <xc.h>
 #include "state_machine.h"

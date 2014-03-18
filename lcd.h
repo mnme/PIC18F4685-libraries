@@ -1,6 +1,6 @@
 /* 
  * File:   lcd.h
- * Author: Roger
+ * Author: Roger Germann
  *
  * Created on 27. Februar 2014, 19:02
  */

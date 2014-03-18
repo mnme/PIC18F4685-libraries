@@ -1,6 +1,6 @@
 /* 
  * File:   peripheral.h
- * Author: Roger
+ * Author: Roger Germann
  *
  * Created on 9. Februar 2014, 20:20
  */

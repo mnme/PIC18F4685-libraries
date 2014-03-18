@@ -1,6 +1,6 @@
 /* 
  * File:   main.c
- * Author: StudElo01
+ * Author: Roger Germann
  *
  * Created on 27.02.14
  */
