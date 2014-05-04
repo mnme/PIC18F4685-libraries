@@ -6,8 +6,8 @@
  */
 
 #include <xc.h>
-#include "state_machine.h"
-#include "peripheral.h"
+#include "../statemachine/state_machine.h"
+#include "../hal/peripheral.h"
 
 TEvents Events;
 

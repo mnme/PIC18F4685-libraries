@@ -38,11 +38,11 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "config_18F4685.h" // Config bits
-#include "peripheral.h"     // Peripherals Defines
-#include "lcd.h"
-#include "loopdelay.h"
-#include "state_machine.h"
+#include "../config/config_18F4685.h" // Config bits
+#include "../hal/peripheral.h"     // Peripherals Defines
+#include "../hal/lcd.h"
+#include "../statemachine/loopdelay.h"
+#include "../statemachine/state_machine.h"
 
 #ifdef USE_RAND
     #include <stdlib.h>

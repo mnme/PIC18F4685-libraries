@@ -8,7 +8,7 @@
 #ifndef STATE_MACHINE_H
 #define	STATE_MACHINE_H
 
-#include "board_config.h"
+#include "../config/board_config.h"
 
 /*#ifndef USE_LOOPDELAY_TIMER2
     #error "Loopdelay not activated"

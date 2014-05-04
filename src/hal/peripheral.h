@@ -5,7 +5,7 @@
  * Created on 9. Februar 2014, 20:20
  */
 
-#include "board_config.h"
+#include "../config/board_config.h"
 
 #ifndef PERIPHERAL_H
 #define	PERIPHERAL_H

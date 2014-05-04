@@ -5,7 +5,7 @@
  * Created on 9. Februar 2014, 21:05
  */
 
-#include "board_config.h"
+#include "../config/board_config.h"
 #include "loopdelay.h"
 #include <xc.h>
 
