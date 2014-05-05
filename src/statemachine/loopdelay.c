@@ -7,7 +7,6 @@
 
 #include "../config/board_config.h"
 #include "loopdelay.h"
-#include <xc.h>
 
 
 // === Loopdelay Time Set ===========================================================
